@@ -27,8 +27,9 @@ public class BookServiceImplementation implements BookService {
     }
 
     @Override
+    @Transactional
     public void updateBook(Book book) {
-
+        bookDao.updateBook(book);
     }
 
     @Override

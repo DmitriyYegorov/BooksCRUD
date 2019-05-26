@@ -35,6 +35,18 @@ public class BookController {
         }
     }
 
+    @RequestMapping(value = "/updateForm")
+    public String updateForm(@RequestParam("bookId") int id, Model model) {
+        model.addAttribute("book", bookService.getBookById(id));
+        return "updateBook";
+    }
+
+    @RequestMapping(value = "/updatingBook", method = RequestMethod.POST)
+    public String updatingUser(@ModelAttribute("book") Book book) {
+        bookService.updateBook(book);
+        return "success";
+    }
+
     @RequestMapping(value = "/success")
     public String success() {
         return "success";

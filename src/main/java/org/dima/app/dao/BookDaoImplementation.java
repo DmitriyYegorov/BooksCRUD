@@ -27,7 +27,8 @@ public class BookDaoImplementation implements BookDao {
 
     @Override
     public void updateBook(Book book) {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.update(book);
     }
 
     @Override
