@@ -35,6 +35,12 @@ public class BookController {
         }
     }
 
+    @RequestMapping(value = "/search")
+    public String searchForm(Model model) {
+        model.addAttribute("booksList", bookService.getAllBooks());
+        return "findAllBooks";
+    }
+
     @RequestMapping(value = "/updateForm")
     public String updateForm(@RequestParam("bookId") int id, Model model) {
         model.addAttribute("book", bookService.getBookById(id));
@@ -44,6 +50,12 @@ public class BookController {
     @RequestMapping(value = "/updatingBook", method = RequestMethod.POST)
     public String updatingUser(@ModelAttribute("book") Book book) {
         bookService.updateBook(book);
+        return "success";
+    }
+
+    @RequestMapping(value = "/deleteBook")
+    public String deletingBook(@RequestParam("bookId") int id) {
+        bookService.deleteBook(id);
         return "success";
     }
 
