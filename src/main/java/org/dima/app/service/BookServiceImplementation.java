@@ -33,12 +33,14 @@ public class BookServiceImplementation implements BookService {
     }
 
     @Override
+    @Transactional
     public Book getBookById(int id) {
-        return null;
+        return bookDao.getBookById(id);
     }
 
     @Override
+    @Transactional
     public List<Book> getAllBooks() {
-        return null;
+        return bookDao.getAllBooks();
     }
 }

@@ -33,11 +33,15 @@ public class BookDaoImplementation implements BookDao {
 
     @Override
     public Book getBookById(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Book book = session.get(Book.class, id);
+        return book;
     }
 
     @Override
     public List<Book> getAllBooks() {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        List<Book> books = session.createQuery("from Book order by Id", Book.class).list();
+        return books;
     }
 }
