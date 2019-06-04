@@ -53,12 +53,6 @@ public class BookController {
         return "success";
     }
 
-    @RequestMapping(value = "/deleteBook")
-    public String deletingBook(@RequestParam("bookId") int id) {
-        bookService.deleteBook(id);
-        return "success";
-    }
-
     @RequestMapping(value = "/success")
     public String success() {
         return "success";
