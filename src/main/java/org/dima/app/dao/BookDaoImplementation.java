@@ -22,7 +22,11 @@ public class BookDaoImplementation implements BookDao {
 
     @Override
     public void deleteBook(int id) {
-
+        Session session = sessionFactory.getCurrentSession();
+        Book book = session.get(Book.class, id);
+        if (book != null) {
+            session.delete(book);
+        }
     }
 
     @Override
